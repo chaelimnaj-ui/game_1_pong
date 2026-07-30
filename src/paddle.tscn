@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ddtth8fl5rwvn"]
+
+[ext_resource type="Script" uid="uid://7n62tgu6n4gg" path="res://src/paddle/paddle.gd" id="1_3r4wq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deipb"]
+
+[node name="Paddle" type="Area2D" unique_id=324875579]
+script = ExtResource("1_3r4wq")
+player = "Player_1"
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=476552488]
+scale = Vector2(0.8, 2.4)
+shape = SubResource("RectangleShape2D_deipb")
+
+[node name="Sprite" type="Polygon2D" parent="." unique_id=327127403]
+scale = Vector2(0.5, 2.5)
+polygon = PackedVector2Array(-16, -9.6, 16, -9.6, 16, 9.6, -16, 9.6)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
