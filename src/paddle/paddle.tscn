@@ -1,13 +1,22 @@
 [gd_scene format=3 uid="uid://ep3yj13ai6bk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_deipb"]
+[ext_resource type="Script" uid="uid://7n62tgu6n4gg" path="res://src/paddle/paddle.gd" id="1_srh7h"]
+[ext_resource type="Texture2D" uid="uid://clho3gjfjhcea" path="res://assets/Paddle.png" id="2_ockbr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4h5q"]
+size = Vector2(15, 145)
 
 [node name="Paddle" type="Area2D" unique_id=324875579]
+script = ExtResource("1_srh7h")
 
-[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=476552488]
-scale = Vector2(0.8, 2.4)
-shape = SubResource("RectangleShape2D_deipb")
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1888657676]
+position = Vector2(5, -1.0000026)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_i4h5q")
 
-[node name="Sprite" type="Polygon2D" parent="." unique_id=327127403]
-scale = Vector2(0.5, 2.5)
-polygon = PackedVector2Array(-16, -9.6, 16, -9.6, 16, 9.6, -16, 9.6)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=853373461]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ockbr")
+offset = Vector2(25, 0)
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

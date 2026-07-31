@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bbtn2iwhwrp1j"]
+
+[ext_resource type="Texture2D" uid="uid://ck6vsvbj3puxj" path="res://assets/Ball.png" id="1_3g7p0"]
+[ext_resource type="Script" uid="uid://c2i5hbowfhfiv" path="res://src/ball/ball.gd" id="1_l8n61"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0ciy"]
+radius = 23.0
+
+[node name="Ball" type="Area2D" unique_id=292839553]
+script = ExtResource("1_l8n61")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1549432340]
+shape = SubResource("CircleShape2D_u0ciy")
+
+[node name="HitboxSprite" type="Sprite2D" parent="." unique_id=1707547153]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_3g7p0")
+
+[node name="Top" type="VisibleOnScreenNotifier2D" parent="." unique_id=1134200741]
+position = Vector2(0, -23)
+rect = Rect2(-10, -10, 20, 10)
+
+[node name="Bottom" type="VisibleOnScreenNotifier2D" parent="." unique_id=98329491]
+position = Vector2(0, 33)
+rect = Rect2(-10, -10, 20, 10)
+
+[connection signal="screen_exited" from="Top" to="." method="_on_top_screen_exited"]
+[connection signal="screen_exited" from="Bottom" to="." method="_on_bottom_screen_exited"]

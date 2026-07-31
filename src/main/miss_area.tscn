@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bsawp4xme7ofw"]
+
+[ext_resource type="Script" uid="uid://dk4vues7srh32" path="res://src/main/area_2d.gd" id="1_lsapg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deipb"]
+size = Vector2(20, 648)
+
+[node name="MissArea" type="Area2D" unique_id=2074355516]
+script = ExtResource("1_lsapg")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1689414491]
+shape = SubResource("RectangleShape2D_deipb")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

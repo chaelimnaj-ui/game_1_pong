@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ci2a4hhu5js52"]
+
+[ext_resource type="PackedScene" uid="uid://bbtn2iwhwrp1j" path="res://src/ball/Ball.tscn" id="1_ie2rd"]
+[ext_resource type="Script" uid="uid://mw3pgadltnof" path="res://src/main/node.gd" id="1_vildw"]
+[ext_resource type="PackedScene" uid="uid://ep3yj13ai6bk" path="res://src/paddle/paddle.tscn" id="2_52bdp"]
+[ext_resource type="PackedScene" uid="uid://bsawp4xme7ofw" path="res://src/main/miss_area.tscn" id="3_52bdp"]
+
+[node name="Main" type="Node" unique_id=1088187034]
+script = ExtResource("1_vildw")
+
+[node name="GameOverTimeout" type="Timer" parent="." unique_id=16730598]
+one_shot = true
+
+[node name="Ball" parent="." unique_id=292839553 instance=ExtResource("1_ie2rd")]
+position = Vector2(576.5, 324.5)
+metadata/_edit_group_ = true
+
+[node name="Paddle" parent="." unique_id=324875579 instance=ExtResource("2_52bdp")]
+position = Vector2(1052, 324.5)
+player = 1
+metadata/_edit_group_ = true
+
+[node name="Paddle2" parent="." unique_id=1776495871 instance=ExtResource("2_52bdp")]
+position = Vector2(100, 324.5)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="." unique_id=2074355516 instance=ExtResource("3_52bdp")]
+position = Vector2(10, 322)
+
+[node name="Area2D2" parent="." unique_id=1897510973 instance=ExtResource("3_52bdp")]
+position = Vector2(1141, 324)
+
+[node name="PlayerScores" type="Label" parent="." unique_id=2073935040]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 18.0
+offset_right = 20.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+
+[connection signal="timeout" from="GameOverTimeout" to="." method="_on_game_over_timeout_timeout"]
+[connection signal="hit" from="Paddle" to="." method="_on_paddle_hit"]
+[connection signal="hit" from="Paddle2" to="." method="_on_paddle_2_hit"]
+[connection signal="miss" from="Area2D" to="." method="_on_area_2d_miss"]
+[connection signal="miss" from="Area2D2" to="." method="_on_area_2d_2_miss"]
